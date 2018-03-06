@@ -11,10 +11,10 @@
 
 int main(int argc, char *argv[])
 {
-    FILE *fptr = NULL;
+    //FILE *fptr = NULL;
     double cameraX, cameraY, cameraZ;
     char buffer[MAX_SIZE];
-    int i;
+    int i,j;
     int vertCount;
     int faceCount;
 
@@ -152,6 +152,20 @@ int main(int argc, char *argv[])
     topleft[2] = (E/2)*up[2] + center[2];
 
     // 6. For each pixel r, c
+    //      (a) Default image color is black (greyscale = 0)
+    float zBuffer[ROW_SIZE][COL_SIZE];
+    for(i = 0; i < ROW_SIZE; i++)
+    {
+        for(j = 0; j < COL_SIZE; i++)
+        {
+            // (b) Default z-buffer depth is very far
+            zBuffer[i][j] = DEFAULT_DEPTH;
+        }
+    }
+
+
+
+
 
 
     fclose(fptr);

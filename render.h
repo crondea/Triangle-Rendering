@@ -13,6 +13,9 @@
 #define FACES_OFFSET 75
 #define EXTRA_STUFF_OFFSET 55
 #define MAX_SIZE 100
+#define DEFAULT_DEPTH 9999999
+#define ROW_SIZE 256
+#define COL_SIZE ROW_SIZE
 
 
 void findMinimums(float **verticies, int numVerts, float *mins);
