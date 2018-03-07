@@ -280,6 +280,13 @@ int main(int argc, char *argv[])
                 intersectMinusvZero[0] = intersect[0] - vZero[0];
                 intersectMinusvZero[1] = intersect[1] - vZero[1];
                 intersectMinusvZero[2] = intersect[2] - vZero[2];
+                intersectMinusvOne[0] = intersect[0] - vOne[0];
+                intersectMinusvOne[1] = intersect[1] - vOne[1];
+                intersectMinusvOne[2] = intersect[2] - vOne[2];
+                intersectMinusvTwo[0] = intersect[0] - vTwo[0];
+                intersectMinusvTwo[1] = intersect[1] - vTwo[1];
+                intersectMinusvTwo[2] = intersect[2] - vTwo[2];
+                
 
                 cross1[0] = (vTwoMinusvZero[1]*vOneMinusvZero[2] - vTwoMinusvZero[2]*vOneMinusvZero[1]);
                 cross1[1] = (vTwoMinusvZero[2]*vOneMinusvZero[0] - vTwoMinusvZero[0]*vOneMinusvZero[2]);
@@ -297,15 +304,13 @@ int main(int argc, char *argv[])
                 cross2[2] = (intersectMinusvOne[0]*vTwoMinusvOne[1] - intersectMinusvOne[1]*vTwoMinusvOne[0]);
                 dot2 = cross1[0]*cross2[0] + cross1[1]*cross2[1] + cross1[2]*cross2[2];
 
-                cross1[0] = (vOneMinusvTwo[1]*vZeroMinusvTwo[2] - vOneMinusvTwo[2]*vOneMinusvTwo[1]);
-                cross1[1] = (vOneMinusvTwo[2]*vZeroMinusvTwo[0] - vOneMinusvTwo[0]*vOneMinusvTwo[2]);
-                cross1[2] = (vOneMinusvTwo[0]*vZeroMinusvTwo[1] - vOneMinusvTwo[1]*vOneMinusvTwo[0]);
+                cross1[0] = (vOneMinusvTwo[1]*vZeroMinusvTwo[2] - vOneMinusvTwo[2]*vZeroMinusvTwo[1]);
+                cross1[1] = (vOneMinusvTwo[2]*vZeroMinusvTwo[0] - vOneMinusvTwo[0]*vZeroMinusvTwo[2]);
+                cross1[2] = (vOneMinusvTwo[0]*vZeroMinusvTwo[1] - vOneMinusvTwo[1]*vZeroMinusvTwo[0]);
                 cross2[0] = (intersectMinusvTwo[1]*vZeroMinusvTwo[2] - intersectMinusvTwo[2]*vZeroMinusvTwo[1]);
                 cross2[1] = (intersectMinusvTwo[2]*vZeroMinusvTwo[0] - intersectMinusvTwo[0]*vZeroMinusvTwo[2]);
                 cross2[2] = (intersectMinusvTwo[0]*vZeroMinusvTwo[1] - intersectMinusvTwo[1]*vZeroMinusvTwo[0]);
                 dot3 = cross1[0]*cross2[0] + cross1[1]*cross2[1] + cross1[2]*cross2[2];
-
-                //if(i == 1 && j == 1 && k == 1) printf("dot1:%f dot2: %f dot3: %f\n",dot1,dot2,dot3);
                 
                 //    (v) If any of the dot products is < 0, then the intersection point
                 //        lies outside the triangle and it can be skipped.
@@ -343,6 +348,7 @@ int main(int argc, char *argv[])
         {
             fwrite(&color[i][j],sizeof(unsigned char),1,optr);
         }
+
     }
 
 
