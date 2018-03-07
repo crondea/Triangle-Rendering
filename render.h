@@ -9,14 +9,14 @@
 #include <string.h>
 #include <math.h>
 
-#define VERTICIES_OFFSET 38
-#define FACES_OFFSET 75
-#define EXTRA_STUFF_OFFSET 55
+#define VERTICIES_OFFSET 36
+#define FACES_OFFSET 71
+#define EXTRA_STUFF_OFFSET 52
 #define MAX_SIZE 100
 #define DEFAULT_DEPTH 9999999
-#define ROW_SIZE 256
-#define COL_SIZE ROW_SIZE
+#define ROWS 256
+#define COLS 256
 
 
-void findMinimums(float **verticies, int numVerts, float *mins);
-void findMaximums(float **verticies, int numVerts, float *maxes);
+//void findMinimums(float **verticies, int numVerts, float *mins);
+//void findMaximums(float **verticies, int numVerts, float *maxes);

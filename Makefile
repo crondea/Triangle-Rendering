@@ -6,7 +6,7 @@
 # main compression file. For submission, the helper programs will be commented out.
 
 comp = gcc
-comp_flags = -g -Wall
+comp_flags = -g
 comp_libs = -lm
 OBJECTS = prog 
 
