@@ -18,5 +18,5 @@
 #define COLS 256
 
 
-//void findMinimums(float **verticies, int numVerts, float *mins);
-//void findMaximums(float **verticies, int numVerts, float *maxes);
+void findMinimums(float **verticies, int numVerts, float *mins);
+void findMaximums(float **verticies, int numVerts, float *maxes);

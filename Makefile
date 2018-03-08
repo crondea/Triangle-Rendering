@@ -6,13 +6,13 @@
 # main compression file. For submission, the helper programs will be commented out.
 
 comp = gcc
-comp_flags = -g
+comp_flags = -g -O4
 comp_libs = -lm
 OBJECTS = prog 
 
 all: $(OBJECTS)
 
-prog: Lab5Main.c render.c
+prog: Lab5Main.c render.c render.h
 	$(comp) $(comp_flags) render.c Lab5Main.c -o prog $(comp_libs)
 
 clean:

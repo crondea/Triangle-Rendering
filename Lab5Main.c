@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
 {
     FILE *fptr = NULL;
     FILE *optr = NULL;
+    int val;
     float cameraX, cameraY, cameraZ;
     char buffer[MAX_SIZE];
     int i,j,k;
@@ -43,24 +44,29 @@ int main(int argc, char *argv[])
     }
 
     // 1. Parse the PLY file header to determine the number of verticies and faces. --------
-    fread(buffer, sizeof(unsigned char),VERTICIES_OFFSET,fptr);
-    fscanf(fptr,"%d",&vertCount);
-    fread(buffer, sizeof(unsigned char),FACES_OFFSET,fptr);
-    fscanf(fptr,"%d",&faceCount);
-    fread(buffer, sizeof(unsigned char),EXTRA_STUFF_OFFSET,fptr);
+    val = fread(buffer, sizeof(unsigned char),VERTICIES_OFFSET,fptr);
+    val = fscanf(fptr,"%d",&vertCount);
+    val = fread(buffer, sizeof(unsigned char),FACES_OFFSET,fptr);
+    val = fscanf(fptr,"%d",&faceCount);
+    val = fread(buffer, sizeof(unsigned char),EXTRA_STUFF_OFFSET,fptr);
 
     // 2. Read the PLY file verticies and faces --------------------------------------------
     float **verts = (float **)calloc(vertCount,sizeof(float*));
     for(i = 0; i < vertCount; i++)
     {
         verts[i] = (float *)calloc(3,sizeof(float));
-        fscanf(fptr,"%f %f %f", &verts[i][0], &verts[i][1], &verts[i][2]);
+        val = fscanf(fptr,"%f %f %f", &verts[i][0], &verts[i][1], &verts[i][2]);
     }
     int **faces = (int **)calloc(faceCount,sizeof(int*));
     for(i = 0; i < faceCount; i++)
     {
         faces[i] = (int *)calloc(4,sizeof(int));
-        fscanf(fptr,"%d %d %d %d", &faces[i][0], &faces[i][1], &faces[i][2], &faces[i][3]);
+        val = fscanf(fptr,"%d %d %d %d", &faces[i][0], &faces[i][1], &faces[i][2], &faces[i][3]);
+    }
+    if(!val)
+    {
+        printf("Error reading file data.\n");
+        exit(-1);
     }
 
     // 3. Calculate the bounding box on the verticies. -------------------------------------
@@ -348,9 +354,7 @@ int main(int argc, char *argv[])
         {
             fwrite(&color[i][j],sizeof(unsigned char),1,optr);
         }
-
     }
-
 
     fclose(fptr);
     fclose(optr);
